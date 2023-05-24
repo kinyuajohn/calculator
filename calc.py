@@ -1,5 +1,16 @@
 from tkinter import *
 import math
+from pygame import mixer
+import speech_recognition
+import threading
+
+mixer.init()
+
+
+def thread_func():
+    t = threading.Thread(target=audio)
+    t.daemon = True
+    t.start()
 
 
 def click(value):
@@ -92,8 +103,84 @@ def click(value):
         pass
 
 
+def add(a, b):
+    return a + b
+
+
+def sub(a, b):
+    return a - b
+
+
+def mul(a, b):
+    return a * b
+
+
+def div(a, b):
+    return a / b
+
+
+def mod(a, b):
+    return a % b
+
+
+def lcm(a, b):
+    l = math.lcm(a, b)
+    return l
+
+
+def hcf(a, b):
+    h = math.gcd(a, b)
+    return h
+
+
+def find_numbers(text_list):
+    numbers_in_text_list = []
+    for number in text_list:
+        try:
+            numbers_in_text_list.append(float(number))
+        except ValueError:
+            pass
+    return numbers_in_text_list
+
+
 def audio():
-    print()
+    mixer.music.load("music1.mp3")
+    mixer.music.play()
+    sr = speech_recognition.Recognizer()
+    with speech_recognition.Microphone() as m:
+        try:
+            sr.adjust_for_ambient_noise(m, duration=0.2)
+            voice = sr.listen(m)
+            text = sr.recognize_google(voice)
+            mixer.music.load("music2.mp3")
+            mixer.music.play()
+
+            text_list = text.split(" ")
+            print(text_list)
+            for word in text_list:
+                if word.upper() in operations.keys():
+                    number_list = find_numbers(text_list)
+                    print(number_list)
+                    result = operations[word.upper()](number_list[0], number_list[1])
+                    entryField.delete(0, END)
+                    entryField.insert(END, result)
+
+                else:
+                    pass
+        except:
+            pass
+
+
+# fmt: off
+operations = {
+    'ADD':add,'ADDITION':add,'SUM':add,'PLUS':add, '+':add,
+    'SUBTRACTION':sub , 'DIFFERENCE':sub , 'MINUS':sub , 'SUBTRACT':sub, '-':sub,
+    'PRODUCT': mul, 'MULTIPLICATION': mul,'MULTIPLY': mul, 'TIMES': mul, '*': mul,
+    'DIVISION': div, 'DIV': div, 'DIVIDE': div, '/': div,
+    'LCM':lcm , 'HCF':hcf,
+    'MOD':mod ,'REMAINDER':mod , 'MODULUS':mod 
+}
+# fmt:on
 
 
 root = Tk()
@@ -112,7 +199,7 @@ micButton = Button(
     bg="dodgerblue3",
     bd=0,
     activebackground="dodgerblue3",
-    command=audio,
+    command=thread_func,
 )
 micButton.grid(row=0, column=7)
 
