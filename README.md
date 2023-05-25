@@ -61,7 +61,7 @@ answer = ""
         entryField.delete(0, END)
         entryField.insert(0, answer)
 
-    except SyntaxError:
+    except (SyntaxError, ValueError):
         # Handle any syntax errors that may occur during evaluation
         pass
 
