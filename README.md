@@ -4,26 +4,29 @@ This is a scientific calculator program implemented using the Tkinter library in
 
 1. Importing the necessary modules:
 
-`from tkinter import \*
+```
+from tkinter import \*
 import math
 from pygame import mixer
 import speech_recognition
-import threading`
+import threading
+```
 
 2. Initializing the mixer module from Pygame for playing audio:
-
-`mixer.init()`
+   `mixer.init()`
 
 3. Defining a function that runs in a separate thread to handle audio processing:
 
-`def thread_func():
-t = threading.Thread(target=audio)
-t.daemon = True
-t.start()`
+```
+def thread_func():
+    t = threading.Thread(target=audio)
+    t.daemon = True
+    t.start()
+```
 
 4. Implementing the click function, which is triggered when a button on the calculator GUI is clicked:
 
-`
+```
 def click(value): # Retrieve the current expression from the entry field
 ex = entryField.get()
 answer = ""
@@ -62,24 +65,26 @@ answer = ""
         # Handle any syntax errors that may occur during evaluation
         pass
 
-`
+```
 
 5. Defining additional mathematical functions for addition, subtraction, multiplication, division, modulus, least common multiple (LCM), and highest common factor (HCF).
 
 6. Implementing a helper function to find numbers in a given list of text:
 
-`def find_numbers(text_list):
-numbers_in_text_list = []
-for number in text_list:
-try:
-numbers_in_text_list.append(float(number))
-except ValueError:
-pass
-return numbers_in_text_list`
+```
+def find_numbers(text_list):
+    numbers_in_text_list = []
+    for number in text_list:
+    try:
+        numbers_in_text_list.append(float(number))
+    except ValueError:
+        pass
+    return numbers_in_text_list
+```
 
 7. Implementing the audio function that performs speech recognition and processes the recognized speech:
 
-`
+```
 def audio(): # Load and play an audio file using Pygame mixer
 mixer.music.load("music1.mp3")
 mixer.music.play()
@@ -117,38 +122,42 @@ mixer.music.play()
                     pass
         except:
             pass
-
-`
+```
 
 8. Defining a dictionary of operations that maps recognized words to their corresponding functions.
 
 9. Creating the main application window using Tkinter:
 
-`root = Tk()
+```
+root = Tk()
 root.title("Scientific Calculator")
 root.configure(bg="dodgerblue3")
-root.geometry("680x486+100+100")`
+root.geometry("680x486+100+100")
+```
 
 10. Loading and displaying images for the calculator logo and microphone button using Tkinter's PhotoImage widget.
 
 11. Creating an entry field widget to display the current expression and result:
 
-`entryField = Entry(
-root,
-font=("arial", 20, "bold"),
-bg="dodgerblue3",
-fg="white",
-bd=10,
-relief=SUNKEN,
-width=30,
+```
+entryField = Entry(
+    root,
+    font=("arial", 20, "bold"),
+    bg="dodgerblue3",
+    fg="white",
+    bd=10,
+    relief=SUNKEN,
+    width=30,
 )
-entryField.grid(row=0, column=0, columnspan=8)`
+entryField.grid(row=0, column=0, columnspan=8)
+```
 
 12. Defining a list of button texts for the calculator.
 
 13. Creating calculator buttons using Tkinter's Button widget, assigning the appropriate click function to each button:
 
-`row_value = 1
+```
+row_value = 1
 column_value = 0
 for i in button_text_list:
     button = Button(
@@ -168,8 +177,8 @@ for i in button_text_list:
     column_value += 1
     if column_value > 7:
         row_value += 1
-        column_value = 0`
+        column_value = 0
+```
 
 14. Running the Tkinter event loop to start the application:
-
-`root.mainloop()`
+    `root.mainloop()`
