@@ -172,7 +172,7 @@ for i in button_text_list:
         font=("arial", 18, "bold"),
         activebackground="dodgerblue3",
         command=lambda button=i: click(button),
-        )
+    )
     button.grid(row=row_value, column=column_value, pady=1)
     column_value += 1
     if column_value > 7:
