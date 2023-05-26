@@ -172,7 +172,7 @@ def find_numbers(text_list):
 
 def audio():
     # Load and play an audio file using Pygame mixer
-    mixer.music.load("music1.mp3")
+    mixer.music.load("audio/music1.mp3")
     mixer.music.play()
 
     # Create a speech recognizer instance
@@ -189,7 +189,7 @@ def audio():
             text = sr.recognize_google(voice)
 
             # Load and play another audio file using Pygame mixer
-            mixer.music.load("music2.mp3")
+            mixer.music.load("audio/music2.mp3")
             mixer.music.play()
 
             # Split the recognized text into a list of words
@@ -232,11 +232,11 @@ root.geometry("680x486+100+100")
 
 # Loading and displaying images for the calculator logo
 # and microphone button using Tkinter's PhotoImage widget.
-logoImage = PhotoImage(file="logo.png")
+logoImage = PhotoImage(file="images/logo.png")
 logoLabel = Label(root, image=logoImage, bg="dodgerblue3")
 logoLabel.grid(row=0, column=0)
 
-micImage = PhotoImage(file="microphone.png")
+micImage = PhotoImage(file="images/microphone.png")
 micButton = Button(
     root,
     image=micImage,
