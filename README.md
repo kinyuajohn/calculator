@@ -1,6 +1,10 @@
 # Scientific Calculator
 
-This is a scientific calculator program implemented using the Tkinter library in Python. It provides a graphical user interface (GUI) for performing various mathematical calculations and includes speech recognition functionality. Here's a breakdown of the code:
+This is a scientific calculator program implemented using the Tkinter library in Python. It provides a graphical user interface (GUI) for performing various mathematical calculations and includes speech recognition functionality.
+
+![Calculator GUI](https://github.com/kingjohnkn/calculator/blob/a94afd04f37372b833f32da4dd73dcdcf5bc6715/calculator.png)
+
+### Here's a breakdown of the code:
 
 1. Importing the necessary modules:
 
