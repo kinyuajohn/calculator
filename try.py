@@ -61,3 +61,8 @@ for word in text_list:
     if word.upper() in operations.keys():
         number_list = find_numbers(text_list)
         print(number_list)
+
+        # result = operations[word.upper()](number_list[0], number_list[1])
+        # print(result)
+
+print(operations["+"](1, 1))

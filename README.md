@@ -28,8 +28,8 @@ def thread_func():
 
 ```
 def click(value): # Retrieve the current expression from the entry field
-ex = entryField.get()
-answer = ""
+    ex = entryField.get()
+    answer = ""
 
     # Perform the appropriate action based on the button value
     try:
@@ -86,42 +86,42 @@ def find_numbers(text_list):
 
 ```
 def audio(): # Load and play an audio file using Pygame mixer
-mixer.music.load("music1.mp3")
-mixer.music.play()
+    mixer.music.load("music1.mp3")
+    mixer.music.play()
 
-    # Create a speech recognizer instance
-    sr = speech_recognition.Recognizer()
+        # Create a speech recognizer instance
+        sr = speech_recognition.Recognizer()
 
-    # Use the default system microphone as the audio source
-    with speech_recognition.Microphone() as m:
-        try:
-            # Adjust for ambient noise and listen for user's voice
-            sr.adjust_for_ambient_noise(m, duration=0.2)
-            voice = sr.listen(m)
+        # Use the default system microphone as the audio source
+        with speech_recognition.Microphone() as m:
+            try:
+                # Adjust for ambient noise and listen for user's voice
+                sr.adjust_for_ambient_noise(m, duration=0.2)
+                voice = sr.listen(m)
 
-            # Convert the speech to text using Google's speech recognition service
-            text = sr.recognize_google(voice)
+                # Convert the speech to text using Google's speech recognition service
+                text = sr.recognize_google(voice)
 
-            # Load and play another audio file using Pygame mixer
-            mixer.music.load("music2.mp3")
-            mixer.music.play()
+                # Load and play another audio file using Pygame mixer
+                mixer.music.load("music2.mp3")
+                mixer.music.play()
 
-            # Split the recognized text into a list of words
-            text_list = text.split(" ")
-            print(text_list)
+                # Split the recognized text into a list of words
+                text_list = text.split(" ")
+                print(text_list)
 
-            # Check if any recognized word matches an operation and perform the operation
-            for word in text_list:
-                if word.upper() in operations.keys():
-                    number_list = find_numbers(text_list)
-                    print(number_list)
-                    result = operations[word.upper()](number_list[0], number_list[1])
-                    entryField.delete(0, END)
-                    entryField.insert(END, result)
-                else:
-                    pass
-        except:
-            pass
+                # Check if any recognized word matches an operation and perform the operation
+                for word in text_list:
+                    if word.upper() in operations.keys():
+                        number_list = find_numbers(text_list)
+                        print(number_list)
+                        result = operations[word.upper()](number_list[0], number_list[1])
+                        entryField.delete(0, END)
+                        entryField.insert(END, result)
+                    else:
+                        pass
+            except:
+                pass
 ```
 
 8. Defining a dictionary of operations that maps recognized words to their corresponding functions.
